@@ -1,0 +1,43 @@
+<h2>Student List</h2>
+
+<div class='form-group row'>
+
+    <label class='col-sm-2 col-form-label'>Filter By:</label>
+
+    <div class='col-sm-10'>
+        <input [(ngModel)]='filter' class='form-control'>
+    </div>
+
+</div>
+
+<table class='table table-striped'>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>RA</th>
+            <th>Name</th>
+            <th>Degree</th>
+            <th>Class</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let student of filteredStudents'>
+            <td>{{ student.id }}</td>
+            <td>{{ student.ra }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.degreeId.name }}</td>
+            <td>{{ student.classId.name }}</td>
+            <td>
+                <a [routerLink]="['/students/info', student.id]" class="btn btn-primary mr-2">Edit</a>
+                <button (click)="deleteById(student.id)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button (click)="recoveryNewStudents()">Adicionar 300 alunos</button>
+<button >filter by degree</button>
+
+<div class="canv">
+  <canvas #myCanvas ></canvas>
+</div>
